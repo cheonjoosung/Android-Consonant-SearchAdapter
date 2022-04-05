@@ -2,6 +2,9 @@ package kr.co.js.consonantsearchadapter
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.widget.EditText
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -38,5 +41,21 @@ class MainActivity : AppCompatActivity() {
 
         val adapter = ConsonantSearchAdapter(list)
         rvList.adapter = adapter
+
+        etSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                //Log.d(localClassName, "beforeTextChanged $p0")
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                //Log.d(localClassName, "onTextChanged $p0")
+                adapter.filter.filter(p0)
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                //Log.d(localClassName, "afterTextChanged $p0")
+            }
+
+        })
     }
 }
