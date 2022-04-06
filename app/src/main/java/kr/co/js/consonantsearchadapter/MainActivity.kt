@@ -6,7 +6,6 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.EditText
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
@@ -36,7 +35,13 @@ class MainActivity : AppCompatActivity() {
             "솨과",
             "수과",
             "똘기",
-            "슴박"
+            "슴박",
+            "ㅇㅊㅇ",
+            "dcd",
+            "abc",
+            "ddd",
+            "ccp",
+            "bbc"
         )
 
         val adapter = ConsonantSearchAdapter(list)

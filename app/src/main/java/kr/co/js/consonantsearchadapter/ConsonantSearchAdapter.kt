@@ -15,6 +15,7 @@ class ConsonantSearchAdapter(
 ) : RecyclerView.Adapter<ConsonantSearchAdapter.SearchViewHolder>(), Filterable {
 
     private var filteredList = arrayListOf<String>()
+
     init {
         filteredList.addAll(dataSet)
     }
@@ -48,9 +49,14 @@ class ConsonantSearchAdapter(
                 } else {
                     val filteringList: ArrayList<String> = ArrayList()
 
+                    val koreanMatcher = KoreanMatcher()
+
                     for (name in dataSet) {
-                        if (name.lowercase(Locale.getDefault()).contains(charString.lowercase(Locale.getDefault()))) {
-                            filteringList.add(name)
+                        if (koreanMatcher.matchKoreanAndConsonant(name, charString)) filteringList.add(name)
+                        else { // 영어인 경우
+                            if (name.lowercase(Locale.getDefault()).contains(charString.lowercase(Locale.getDefault()))) {
+                                filteringList.add(name)
+                            }
                         }
                     }
 
